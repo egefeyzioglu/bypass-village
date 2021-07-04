@@ -1,4 +1,16 @@
 <?php
+	$viewcount_this_document_path = "/index.php";
+  include_once('viewcount.php');
+
+
+	$maillist_ok = false;
+
+	if(isset($_POST['maillist'])){
+		$sql = "INSERT INTO maillist (email) VALUES(\"".mysqli_real_escape_string($conn, $_POST['email'])."\")";
+		mysqli_query($conn_maillist, $sql);// or die(mysqli_errno($conn).": ".mysqli_error($conn)."<br/>\n$sql");
+		$maillist_ok = true;
+	}
+
   $navbar_items = array(
     '<a href="#">Navbar Item</a>',
     '<a href="#">Navbar Item</a>',
@@ -14,7 +26,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
   <title>Lock Bypass Village</title>
-  
+
   <!-- Favicon Stuff -->
   <link rel="apple-touch-icon" sizes="180x180" href="/img/favicons/apple-touch-icon.png?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="/img/favicons/favicon-32x32.png?v=2">
